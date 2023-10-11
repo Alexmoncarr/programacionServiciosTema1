@@ -1,26 +1,13 @@
 import java.io.File;
-import java.util.Random;
 
-public class cadenas {
+public class Generador {
 
     public static void main(String[] args) {
-        Random random = new Random();
-
-        // Generamos las cadenas
+        // Lanzar 10 instancias de la aplicación 'cadenas'
         for (int i = 0; i < 10; i++) {
-            int longitud = random.nextInt(20) + 1;
-            StringBuilder cadena = new StringBuilder();
-
-            for (int j = 0; j < longitud; j++) {
-                char caracter = (char) (random.nextInt(26) + 'a');
-                cadena.append(caracter);
-            }
-
-            // Llamamos a Frecuencia para contar las vocales y guardar los resultados
-            //frecuencia.contarVocales(cadena.toString());
             try{
                 File ruta = new File("C:\\Users\\aleja\\IdeaProjects\\programacionServiciosTema1\\out\\production\\programacionServiciosTema1");
-                ProcessBuilder pb = new ProcessBuilder("java","frecuencia", cadena.toString());
+                ProcessBuilder pb = new ProcessBuilder("java","cadenas");
                 pb.directory(ruta);
                 pb.redirectInput(ProcessBuilder.Redirect.PIPE);
                 pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
@@ -31,5 +18,7 @@ public class cadenas {
                 throw new RuntimeException(e);
             }
         }
+
+        System.out.println("Generación de cadenas completada.");
     }
 }
